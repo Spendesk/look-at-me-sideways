@@ -33,8 +33,8 @@ module.exports = function(
 					ok = false;
 					messages.push({
 						location, path, rule, exempt, level: 'warning',
-						description: `${location} is missing a description or a label`,
-						hint: 'Either apply a description and a description or hide it',
+						description: `${location} is missing a label or a description`,
+						hint: 'Either apply a label and a description or hide it',
 					});
 				}
 			}
