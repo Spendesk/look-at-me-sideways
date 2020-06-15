@@ -29,12 +29,12 @@ module.exports = function(
 				let location = `view:${view._view}/field:${field._dimension || field._measure || field._filter || field._parameter}`;
 				let path = `/projects/${project.name}/files/${file._file_path}#${location}`;
 				let exempt = getExemption(field, rule) || getExemption(view, rule) || getExemption(file, rule);
-				if (!field.hidden && !field.description) {
+				if (!field.hidden && (!field.description || !field.label)) {
 					ok = false;
 					messages.push({
 						location, path, rule, exempt, level: 'warning',
-						description: `${location} is missing a description`,
-						hint: 'Either apply a description or hide it',
+						description: `${location} is missing a description or a label`,
+						hint: 'Either apply a description and a description or hide it',
 					});
 				}
 			}
